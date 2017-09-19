@@ -25,15 +25,12 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version = '>= 2.0.0'
 
   gem.add_runtime_dependency 'fluentd', '~> 0.14'
-  gem.add_runtime_dependency 'fluent-mixin-plaintextformatter'
-  gem.add_runtime_dependency 'fluent-mixin-config-placeholders'
-  gem.add_runtime_dependency 'fluent-mixin-rewrite-tag-name'
   gem.add_runtime_dependency 'influxdb', '~> 0.4'
   gem.add_runtime_dependency 'ruby-kafka', '~> 0.4.2'
 
   gem.add_development_dependency 'bundler', '~> 1.3'
-  gem.add_development_dependency 'rake', '~> 10.0'
-  gem.add_development_dependency 'test-unit', '~> 3.1.7'
+  gem.add_development_dependency 'rake', '~> 12.0'
+  gem.add_development_dependency 'test-unit', '~> 3.2'
   gem.add_development_dependency 'rubocop'
   gem.add_development_dependency 'pry'
   gem.add_development_dependency 'simplecov'

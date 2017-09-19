@@ -1,20 +1,14 @@
 # frozen_string_literal: true
 
-require 'fluent/mixin/config_placeholders'
-require 'fluent/mixin/plaintextformatter'
-require 'fluent/mixin/rewrite_tag_name'
 require 'fluent/mixin/deis'
 require 'fluent/plugin/output'
+require 'fluent/plugin_helper/compat_parameters'
 require 'influxdb'
 
 module Fluent::Plugin
   class DeisOutput < Output
     Fluent::Plugin.register_output('deis', self)
 
-    include Fluent::Mixin::PlainTextFormatter
-    include Fluent::Mixin::ConfigPlaceholders
-    include Fluent::HandleTagNameMixin
-    include Fluent::Mixin::RewriteTagName
     include Fluent::Mixin::Deis
     config_param :brokers, :string, default: 'localhost:9092',
                                     desc: <<-DESC
