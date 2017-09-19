@@ -1,6 +1,9 @@
+sudo: required
 language: ruby
 rvm:
   - 2.3
   - 2.4
+services:
+  - docker
 script:
 - make test
