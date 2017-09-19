@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fluent-plugin-deis-kafka (0.2.0)
+    fluent-plugin-deis-kafka (0.2.1)
       fluentd (~> 0.14)
       influxdb (~> 0.4)
       ruby-kafka (~> 0.4.2)
