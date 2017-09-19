@@ -21,22 +21,26 @@ module Fluent
       def build_series(message)
         metric = parse_router_log(message['log'], message['kubernetes']['host'])
         if metric
+          metric_timestamp = (metric['timestamp'].to_f * 1_000_000_000).to_i
           tags = { app: metric['app'], status_code: metric['status_code'], host: metric['host'] }
           data = [
             {
               series: 'deis_router_request_time_ms',
               values: { value: metric['request_time'] },
-              tags: tags
+              tags: tags,
+              timestamp: metric_timestamp
             },
             {
               series: 'deis_router_response_time_ms',
               values: { value: metric['response_time'] },
-              tags: tags
+              tags: tags,
+              timestamp: metric_timestamp
             },
             {
               series: 'deis_router_bytes_sent',
               values: { value: metric['bytes_sent'] },
-              tags: tags
+              tags: tags,
+              timestamp: metric_timestamp
             }
           ]
           return data
@@ -51,6 +55,7 @@ module Fluent
         split_message = message.split(' - ')
         return nil if split_message.length < 14
         metric = {}
+        metric['timestamp'] = Time.parse(split_message[0])
         metric['app'] = split_message[1].strip
         metric['status_code'] = split_message[4].strip
         metric['bytes_sent'] = split_message[6].strip.to_f

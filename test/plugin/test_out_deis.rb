@@ -57,6 +57,7 @@ class KafkaOutputTest < Test::Unit::TestCase
     kafka = Kafka.new(seed_brokers: ['localhost:9092'])
 
     kafka.each_message(topic: 'metrics') do |message|
+      p message.value
       assert_true(message.value.include?('deis_router_request_time_ms,app=foo,status_code=200 value=0.046'))
       assert_true(message.value.include?('deis_router_response_time_ms,app=foo,status_code=200 value=0.002'))
       assert_true(message.value.include?('deis_router_bytes_sent,app=foo,status_code=200 value=211.0'))
