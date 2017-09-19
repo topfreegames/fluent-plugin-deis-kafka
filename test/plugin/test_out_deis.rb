@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 require 'helper'
-require 'fluent/output'
+require 'fluent/test/driver/output'
+require 'fluent/plugin/output'
 require 'kafka'
 
 class KafkaOutputTest < Test::Unit::TestCase
@@ -24,7 +25,7 @@ class KafkaOutputTest < Test::Unit::TestCase
   )
 
   def create_driver(conf = CONFIG, tag = 'test')
-    Fluent::Test::BufferedOutputTestDriver.new(Fluent::DeisOutput, tag).configure(conf)
+    Fluent::Test::Driver::Output.new(Fluent::Plugin::DeisOutput).configure(conf)
   end
 
   def test_configure
@@ -49,9 +50,8 @@ class KafkaOutputTest < Test::Unit::TestCase
 
   def test_write
     d = create_driver
-    time = Time.parse('2011-01-02 13:14:15 UTC').to_i
-    d.run do
-      d.emit(@valid_router_log, time)
+    d.run(default_tag: 'test') do
+      d.feed(@valid_router_log)
     end
 
     kafka = Kafka.new(seed_brokers: ['localhost:9092'])

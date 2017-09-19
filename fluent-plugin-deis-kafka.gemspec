@@ -24,7 +24,7 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = '>= 2.0.0'
 
-  gem.add_runtime_dependency 'fluentd'
+  gem.add_runtime_dependency 'fluentd', '~> 0.14'
   gem.add_runtime_dependency 'fluent-mixin-plaintextformatter'
   gem.add_runtime_dependency 'fluent-mixin-config-placeholders'
   gem.add_runtime_dependency 'fluent-mixin-rewrite-tag-name'

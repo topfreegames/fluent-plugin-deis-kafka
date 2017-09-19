@@ -4,10 +4,10 @@ require 'fluent/mixin/config_placeholders'
 require 'fluent/mixin/plaintextformatter'
 require 'fluent/mixin/rewrite_tag_name'
 require 'fluent/mixin/deis'
-require 'fluent/output'
+require 'fluent/plugin/output'
 require 'influxdb'
 
-module Fluent
+module Fluent::Plugin
   class DeisOutput < Output
     Fluent::Plugin.register_output('deis', self)
 
@@ -64,10 +64,6 @@ module Fluent
       super
       shutdown_producers
       @kafka = nil
-    end
-
-    def format_stream(_tag, es)
-      es.to_msgpack_stream
     end
 
     def shutdown_producers

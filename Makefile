@@ -10,3 +10,7 @@ test: test-dep-up
 	sleep 10
 	@rake test
 	$(MAKE) test-dep-down
+
+publish:
+	@gem build fluent-plugin-deis-kafka.gemspec
+	@gem push fluent-plugin-deis-kafka*.gem

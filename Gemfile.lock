@@ -5,7 +5,7 @@ PATH
       fluent-mixin-config-placeholders
       fluent-mixin-plaintextformatter
       fluent-mixin-rewrite-tag-name
-      fluentd
+      fluentd (~> 0.14)
       influxdb (~> 0.4)
       ruby-kafka (~> 0.4.2)
 
