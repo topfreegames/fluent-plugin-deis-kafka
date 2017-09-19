@@ -11,6 +11,11 @@ test: test-dep-up
 	@rake test
 	$(MAKE) test-dep-down
 
+static:
+	@rubocop -ES
+
+test-ci: test static
+
 publish:
 	@gem build fluent-plugin-deis-kafka.gemspec
 	@gem push fluent-plugin-deis-kafka*.gem

@@ -1,1 +1,1 @@
-# fluentd-plugin-deis-kafka
+# fluentd-plugin-deis-kafka [![Build Status](https://travis-ci.org/topfreegames/fluent-plugin-deis-kafka.svg?branch=master)](https://travis-ci.org/topfreegames/fluent-plugin-deis-kafka)[![Dependency Status](https://gemnasium.com/badges/github.com/topfreegames/fluent-plugin-deis-kafka.svg)](https://gemnasium.com/github.com/topfreegames/fluent-plugin-deis-kafka)[![Gem Version](https://badge.fury.io/rb/fluentd.svg)](https://badge.fury.io/rb/fluentd)

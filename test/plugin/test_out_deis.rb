@@ -24,7 +24,7 @@ class KafkaOutputTest < Test::Unit::TestCase
     brokers localhost:9092
   )
 
-  def create_driver(conf = CONFIG, tag = 'test')
+  def create_driver(conf = CONFIG, _tag = 'test')
     Fluent::Test::Driver::Output.new(Fluent::Plugin::DeisOutput).configure(conf)
   end
 
