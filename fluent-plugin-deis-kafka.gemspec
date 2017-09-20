@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = 'fluent-plugin-deis-kafka'
-  gem.version       = '0.2.1'
+  gem.version       = '0.2.2'
   gem.authors       = ['Guilherme Souza']
   gem.email         = ['backend@tfgco.com']
   gem.description   = 'Fluentd plugin to send deis-router metrics'\
