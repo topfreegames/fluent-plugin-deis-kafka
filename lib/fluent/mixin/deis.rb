@@ -21,7 +21,10 @@ module Fluent
       def build_series(message)
         metric = parse_router_log(message['log'], message['kubernetes']['host'])
         if metric
-          metric_timestamp = (metric['timestamp'].to_f * 1_000_000_000).to_i
+          metric_timestamp = (
+            metric['timestamp'].to_f * 1_000_000_000 + Time.now.nsec
+          ).to_i # Using current nanosecond resolution to avoid replacing points
+
           tags = { app: metric['app'], status_code: metric['status_code'], host: metric['host'] }
           data = [
             {
