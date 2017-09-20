@@ -19,7 +19,7 @@ Fluent output plugin to send deis-router metrics to kafka, to later be consumed 
 ```
 
 ## parameters
-````
+```
 :brokers, default: 'localhost:9092'
 :client_id, default: 'fluentd'
 :metrics_topic, default: 'metrics'
